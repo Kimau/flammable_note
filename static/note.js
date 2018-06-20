@@ -158,7 +158,7 @@ let noteData = {
             noteVal = window.prompt("Edit Note", oldline.Note);
         }
 
-        postAJAX("/edit/" + oldline.ID, noteVal, (data, status) => {
+        postAJAX("./edit/" + oldline.ID, noteVal, (data, status) => {
             let line = JSON.parse(data);
             this.Notes[line.ID] = line;
             this.refreshNoteHTML();
@@ -167,7 +167,7 @@ let noteData = {
 
     submitNewNote: function () {
         let noteVal = window.prompt("New Note");
-        postAJAX("/new", noteVal, (data, status) => {
+        postAJAX("./new", noteVal, (data, status) => {
             let line = JSON.parse(data);
 
             this.Notes.push(line);
@@ -182,7 +182,7 @@ let noteData = {
 
 // On Load
 window.addEventListener("load", (ev) => {
-    getAJAX("/today", (data, status) => {
+    getAJAX("./today", (data, status) => {
         noteData.setup(data, status);
     }
     );
