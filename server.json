@@ -1,7 +1,7 @@
 {
-    "Address" : ":2053",
-	"Use SSL": false,
+    "Address" : ":30144",
+    "Use SSL": false,
     "Use AutoCert": false,
     "Use Login": false,
-    "Domain Whitelist": ["twitch.claire-blackshaw.com"]
+    "Domain Whitelist": ["kimau.ddns.com"]
 }
