@@ -1,11 +1,11 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"io"
 	"log"
 	"os"
+	"time"
 )
 
 var (
@@ -28,10 +28,10 @@ func main() {
 	log.SetOutput(io.MultiWriter(f, &logBuffer, os.Stdout))
 
 	// Load Data
-
-	// Setup Console
-	cmdChan := make(chan string)
-	go consoleReadLoop(cmdChan)
+	err = noteStore.loadNoteFile(time.Now())
+	if err != nil {
+		panic(err)
+	}
 
 	// Setup Website
 	servRouter := launchWeb(serverSettings)
@@ -43,31 +43,15 @@ func main() {
 	servRouter.HandleFunc("/today", handleNoteToday)
 	servRouter.HandleFunc("/past", handleNotePast)
 
+	ticker := time.NewTicker(time.Minute)
+
 	isRunning := true
 	for isRunning {
 		select {
-		case cmdLine := <-cmdChan:
-			if cmdLine == "quit" {
-				isRunning = false
-				break
-			}
+		case <-ticker.C:
+			// Check It
 		}
 	}
 
 	log.Printf("Shutting down")
-}
-
-func consoleReadLoop(c chan string) {
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		cmd := scanner.Text()
-		if cmd == "panic" {
-			panic("Forced Panic")
-		}
-
-		select {
-		case c <- cmd:
-		default: // non blocking
-		}
-	}
 }

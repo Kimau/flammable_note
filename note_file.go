@@ -97,6 +97,10 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	}
 
 	f, err := os.OpenFile(fmt.Sprintf("%s/%s.csv", dataFolder, dateStr), os.O_RDONLY, 0666)
+	if os.IsNotExist(err) {
+		return os.MkdirAll(dataFolder, 0755)
+	}
+
 	if err != nil {
 		return err
 	}

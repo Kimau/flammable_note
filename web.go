@@ -39,7 +39,6 @@ type Server struct {
 
 func launchWeb(configFile string) *mux.Router {
 	// Loading Config
-	var serverParam Server
 	configData, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		panic(err)
