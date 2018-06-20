@@ -1,0 +1,118 @@
+2018/06/20 06:57:42 --- Launch Website ---
+2018/06/20 06:57:42 Listening:  :443
+2018/06/20 06:58:23 --- Launch Website ---
+2018/06/20 06:58:23 Listening:  :2053
+2018/06/20 06:58:41 http: panic serving [::1]:61268: runtime error: invalid memory address or nil pointer dereference
+goroutine 4 [running]:
+net/http.(*conn).serve.func1(0xc042190000)
+	C:/Go/src/net/http/server.go:1697 +0xd7
+panic(0x7b0320, 0xa20e50)
+	C:/Go/src/runtime/panic.go:491 +0x291
+main.corsMe(0x9f4fa0, 0xc042182380, 0xc0421b4500)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web.go:139 +0x2f
+main.handleAdmin(0x9f4fa0, 0xc042182380, 0xc0421b4500)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/note_web.go:11 +0x53
+net/http.HandlerFunc.ServeHTTP(0x836cb0, 0x9f4fa0, 0xc042182380, 0xc0421b4500)
+	C:/Go/src/net/http/server.go:1918 +0x4b
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc04213a1c0, 0x9f4fa0, 0xc042182380, 0xc0421b4500)
+	D:/Dev/Go/src/github.com/gorilla/mux/mux.go:159 +0xf4
+main.(*AuthWrapHACK).ServeHTTP(0xc042130240, 0x9f4fa0, 0xc042182380, 0xc0421b4300)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web_auth.go:75 +0x65
+net/http.serverHandler.ServeHTTP(0xc042134270, 0x9f4fa0, 0xc042182380, 0xc0421b4300)
+	C:/Go/src/net/http/server.go:2619 +0xbb
+net/http.(*conn).serve(0xc042190000, 0x9f56a0, 0xc042058340)
+	C:/Go/src/net/http/server.go:1801 +0x724
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2720 +0x28f
+2018/06/20 06:58:41 http: panic serving [::1]:61270: runtime error: invalid memory address or nil pointer dereference
+goroutine 37 [running]:
+net/http.(*conn).serve.func1(0xc042162960)
+	C:/Go/src/net/http/server.go:1697 +0xd7
+panic(0x7b0320, 0xa20e50)
+	C:/Go/src/runtime/panic.go:491 +0x291
+main.corsMe(0x9f4fa0, 0xc042182460, 0xc0421b4700)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web.go:139 +0x2f
+main.handleAdmin(0x9f4fa0, 0xc042182460, 0xc0421b4700)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/note_web.go:11 +0x53
+net/http.HandlerFunc.ServeHTTP(0x836cb0, 0x9f4fa0, 0xc042182460, 0xc0421b4700)
+	C:/Go/src/net/http/server.go:1918 +0x4b
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc04213a1c0, 0x9f4fa0, 0xc042182460, 0xc0421b4700)
+	D:/Dev/Go/src/github.com/gorilla/mux/mux.go:159 +0xf4
+main.(*AuthWrapHACK).ServeHTTP(0xc042130240, 0x9f4fa0, 0xc042182460, 0xc0421e0000)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web_auth.go:75 +0x65
+net/http.serverHandler.ServeHTTP(0xc042134270, 0x9f4fa0, 0xc042182460, 0xc0421e0000)
+	C:/Go/src/net/http/server.go:2619 +0xbb
+net/http.(*conn).serve(0xc042162960, 0x9f56a0, 0xc04203a180)
+	C:/Go/src/net/http/server.go:1801 +0x724
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2720 +0x28f
+2018/06/20 06:58:41 http: panic serving [::1]:61271: runtime error: invalid memory address or nil pointer dereference
+goroutine 39 [running]:
+net/http.(*conn).serve.func1(0xc042162a00)
+	C:/Go/src/net/http/server.go:1697 +0xd7
+panic(0x7b0320, 0xa20e50)
+	C:/Go/src/runtime/panic.go:491 +0x291
+main.corsMe(0x9f4fa0, 0xc042198380, 0xc042118700)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web.go:139 +0x2f
+main.handleAdmin(0x9f4fa0, 0xc042198380, 0xc042118700)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/note_web.go:11 +0x53
+net/http.HandlerFunc.ServeHTTP(0x836cb0, 0x9f4fa0, 0xc042198380, 0xc042118700)
+	C:/Go/src/net/http/server.go:1918 +0x4b
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc04213a1c0, 0x9f4fa0, 0xc042198380, 0xc042118700)
+	D:/Dev/Go/src/github.com/gorilla/mux/mux.go:159 +0xf4
+main.(*AuthWrapHACK).ServeHTTP(0xc042130240, 0x9f4fa0, 0xc042198380, 0xc042118500)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web_auth.go:75 +0x65
+net/http.serverHandler.ServeHTTP(0xc042134270, 0x9f4fa0, 0xc042198380, 0xc042118500)
+	C:/Go/src/net/http/server.go:2619 +0xbb
+net/http.(*conn).serve(0xc042162a00, 0x9f56a0, 0xc042058580)
+	C:/Go/src/net/http/server.go:1801 +0x724
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2720 +0x28f
+2018/06/20 06:58:46 http: panic serving [::1]:61306: runtime error: invalid memory address or nil pointer dereference
+goroutine 23 [running]:
+net/http.(*conn).serve.func1(0xc042056f00)
+	C:/Go/src/net/http/server.go:1697 +0xd7
+panic(0x7b0320, 0xa20e50)
+	C:/Go/src/runtime/panic.go:491 +0x291
+main.corsMe(0x9f4fa0, 0xc042216000, 0xc0421e0200)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web.go:139 +0x2f
+main.handleAdmin(0x9f4fa0, 0xc042216000, 0xc0421e0200)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/note_web.go:11 +0x53
+net/http.HandlerFunc.ServeHTTP(0x836cb0, 0x9f4fa0, 0xc042216000, 0xc0421e0200)
+	C:/Go/src/net/http/server.go:1918 +0x4b
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc04213a1c0, 0x9f4fa0, 0xc042216000, 0xc0421e0200)
+	D:/Dev/Go/src/github.com/gorilla/mux/mux.go:159 +0xf4
+main.(*AuthWrapHACK).ServeHTTP(0xc042130240, 0x9f4fa0, 0xc042216000, 0xc0421b4800)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web_auth.go:75 +0x65
+net/http.serverHandler.ServeHTTP(0xc042134270, 0x9f4fa0, 0xc042216000, 0xc0421b4800)
+	C:/Go/src/net/http/server.go:2619 +0xbb
+net/http.(*conn).serve(0xc042056f00, 0x9f56a0, 0xc042130400)
+	C:/Go/src/net/http/server.go:1801 +0x724
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2720 +0x28f
+2018/06/20 06:59:16 http: panic serving [::1]:61346: runtime error: invalid memory address or nil pointer dereference
+goroutine 6 [running]:
+net/http.(*conn).serve.func1(0xc0421900a0)
+	C:/Go/src/net/http/server.go:1697 +0xd7
+panic(0x7b0320, 0xa20e50)
+	C:/Go/src/runtime/panic.go:491 +0x291
+main.corsMe(0x9f4fa0, 0xc0422160e0, 0xc0421e0400)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web.go:139 +0x2f
+main.handleAdmin(0x9f4fa0, 0xc0422160e0, 0xc0421e0400)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/note_web.go:11 +0x53
+net/http.HandlerFunc.ServeHTTP(0x836cb0, 0x9f4fa0, 0xc0422160e0, 0xc0421e0400)
+	C:/Go/src/net/http/server.go:1918 +0x4b
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc04213a1c0, 0x9f4fa0, 0xc0422160e0, 0xc0421e0400)
+	D:/Dev/Go/src/github.com/gorilla/mux/mux.go:159 +0xf4
+main.(*AuthWrapHACK).ServeHTTP(0xc042130240, 0x9f4fa0, 0xc0422160e0, 0xc042118800)
+	D:/Dev/Go/src/github.com/Kimau/flammable_note/web_auth.go:75 +0x65
+net/http.serverHandler.ServeHTTP(0xc042134270, 0x9f4fa0, 0xc0422160e0, 0xc042118800)
+	C:/Go/src/net/http/server.go:2619 +0xbb
+net/http.(*conn).serve(0xc0421900a0, 0x9f56a0, 0xc042058700)
+	C:/Go/src/net/http/server.go:1801 +0x724
+created by net/http.(*Server).Serve
+	C:/Go/src/net/http/server.go:2720 +0x28f
+2018/06/20 07:00:08 --- Launch Website ---
+2018/06/20 07:00:08 Listening:  :2053
+2018/06/20 07:06:33 --- Launch Website ---
+2018/06/20 07:06:33 Listening:  :2053

@@ -54,8 +54,6 @@ func launchWeb(configFile string) *mux.Router {
 	log.Println("--- Launch Website ---")
 	router := mux.NewRouter()
 
-	// router.HandleFunc("/", bf.WebBookRoot)
-
 	router.PathPrefix("/{filepath:[0-9A-Za-z_/]+\\.[[:word:]]+}").Handler(
 		http.FileServer(http.Dir("./static")))
 

@@ -43,7 +43,7 @@ This is built stupid simple for a reason because if it fucks up or you don't lik
 * Timestamp is optional if the client wishes to provide an alternate timestamp. It must be in the past but on today's date
 * Response is the full CSV for today (text data is cheap)
 
-### POST /edit?index=&timestamp
+### POST /edit/{index}/?timestamp=
 * Body text is the new note
 * Index is a MUST and is the offset for that note
 * Timestamp is an optional timestamp if the client wishes to provide. In the case where the timestamp is NOT today you can edit a past note. Though the index must be in said past

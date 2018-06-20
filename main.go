@@ -12,6 +12,7 @@ var (
 	logBuffer bytes.Buffer
 
 	serverSettings string
+	noteStore      NoteFile
 )
 
 func init() {
@@ -35,9 +36,10 @@ func main() {
 	// Setup Website
 	servRouter := launchWeb(serverSettings)
 
+	servRouter.HandleFunc("/", handleRoot)
 	servRouter.HandleFunc("/dashboard", handleAdmin)
-	servRouter.HandleFunc("/new", handleNoteNew)
-	servRouter.HandleFunc("/edit", handleNoteEdit)
+	servRouter.HandleFunc("/new", handleNoteNew).Methods("POST")
+	servRouter.HandleFunc("/edit/{index}", handleNoteEdit).Methods("POST")
 	servRouter.HandleFunc("/today", handleNoteToday)
 	servRouter.HandleFunc("/past", handleNotePast)
 
