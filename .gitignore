@@ -12,5 +12,6 @@
 *.out
 
 data
+log.txt
 _*
 *secret*
