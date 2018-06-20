@@ -12,6 +12,7 @@
 *.out
 
 data
+log.txt
 _*
 *secret*
 flammable_note

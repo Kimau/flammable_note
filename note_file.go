@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"time"
@@ -30,7 +31,7 @@ type NoteFile struct {
 // Record - Convert to Record Line
 func (nf *NoteFile) Record(line *NoteLine) []string {
 	return []string{
-		string(line.Index),
+		strconv.Itoa(line.Index),
 		line.Note,
 		line.Created.Format(noteTimeFormat),
 		line.Modified.Format(noteTimeFormat),
@@ -70,18 +71,25 @@ func (nf *NoteFile) Save() error {
 	if err != nil {
 		return err
 	}
+	defer f.Close()
+	w := csv.NewWriter(f)
 
 	// Header
-	fmt.Fprintf(f, "%s,%s", dateStr, versionStr)
-	w := csv.NewWriter(f)
+	w.Write([]string{dateStr, versionStr})
 
 	// Notes
 	for _, nl := range nf.Notes {
-		err = w.Write(nf.Record(&nl))
+		recLine := nf.Record(&nl)
+		log.Println(recLine)
+
+		err = w.Write(recLine)
 		if err != nil {
 			return err
 		}
 	}
+	w.Flush()
+
+	log.Printf("-- SAVED FILE -- ")
 
 	return nil
 }
@@ -100,6 +108,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	if os.IsNotExist(err) {
 		return os.MkdirAll(dataFolder, 0755)
 	}
+	defer f.Close()
 
 	if err != nil {
 		return err
