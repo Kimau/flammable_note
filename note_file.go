@@ -111,7 +111,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	defer f.Close()
 
 	if err != nil {
-		return err
+		return fmt.Errorf("Failed to open CSV \n %s", err.Error())
 	}
 
 	r := csv.NewReader(f)
@@ -119,7 +119,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	// Parse Header
 	rec, err := r.Read()
 	if err != nil {
-		return err
+		return fmt.Errorf("Failed to parse header \n %s", err.Error())
 	}
 
 	if rec[1] != versionStr {
@@ -128,7 +128,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 
 	ft, err := time.Parse(noteDayFormat, rec[0])
 	if err != nil {
-		return err
+		return fmt.Errorf("Failed to parse Time \n %s", err.Error())
 	}
 	if ft != baseTime {
 		return fmt.Errorf("Date mismatch %s != %s", ft.String(), baseTime.String())
@@ -137,7 +137,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	// Notes
 	recList, err := r.ReadAll()
 	if err != nil {
-		return err
+		return fmt.Errorf("Failed to readall \n %s", err.Error())
 	}
 
 	nf.Notes = make([]NoteLine, len(recList), len(recList))
@@ -145,7 +145,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	for i, nl := range recList {
 		nf.Notes[i], err = nf.FromRecord(nl)
 		if err != nil {
-			return err
+			return fmt.Errorf("Failed to do From Record %d \n %s \n %s", i, nl, err.Error())
 		}
 	}
 
