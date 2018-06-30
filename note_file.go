@@ -117,6 +117,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	r := csv.NewReader(f)
 
 	// Parse Header
+	r.FieldsPerRecord = 2
 	rec, err := r.Read()
 	if err != nil {
 		log.Printf("Failed to parse header \n %s", err.Error())
@@ -135,6 +136,7 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	}
 
 	// Notes
+	r.FieldsPerRecord = 4
 	recList, err := r.ReadAll()
 	if err != nil {
 		return fmt.Errorf("Failed to readall \n %s", err.Error())
