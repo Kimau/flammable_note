@@ -119,19 +119,19 @@ func (nf *NoteFile) loadNoteFile(t time.Time) error {
 	// Parse Header
 	rec, err := r.Read()
 	if err != nil {
-		return fmt.Errorf("Failed to parse header \n %s", err.Error())
-	}
+		log.Printf("Failed to parse header \n %s", err.Error())
+	} else {
+		if rec[1] != versionStr {
+			return fmt.Errorf("Version mismatch %s != %s", rec[1], versionStr)
+		}
 
-	if rec[1] != versionStr {
-		return fmt.Errorf("Version mismatch %s != %s", rec[1], versionStr)
-	}
-
-	ft, err := time.Parse(noteDayFormat, rec[0])
-	if err != nil {
-		return fmt.Errorf("Failed to parse Time \n %s", err.Error())
-	}
-	if ft != baseTime {
-		return fmt.Errorf("Date mismatch %s != %s", ft.String(), baseTime.String())
+		ft, err := time.Parse(noteDayFormat, rec[0])
+		if err != nil {
+			return fmt.Errorf("Failed to parse Time \n %s", err.Error())
+		}
+		if ft != baseTime {
+			return fmt.Errorf("Date mismatch %s != %s", ft.String(), baseTime.String())
+		}
 	}
 
 	// Notes
